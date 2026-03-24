@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/custom-cursor";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,14 +27,16 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased selection:bg-accent selection:text-accent-foreground`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
-          <CustomCursor />
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <SmoothScroll>
+            <CustomCursor />
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>
