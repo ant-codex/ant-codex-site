@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Ant-Codex Team" }],
   creator: "Ant-Codex",
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   openGraph: {
     type: "website",

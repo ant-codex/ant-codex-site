@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="black" />
+  <text 
+    x="50%" 
+    y="55%" 
+    dominant-baseline="middle" 
+    text-anchor="middle" 
+    fill="white" 
+    style="font-family: 'Times New Roman', serif; font-weight: 900; font-size: 55px;"
+  >
+    a.
+  </text>
+</svg>
