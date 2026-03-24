@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 
 export function Contact() {
   const [focused, setFocused] = useState<string | null>(null);
@@ -102,9 +103,9 @@ export function Contact() {
             <div className="sm:col-span-2">
               <button
                 type="submit"
-                className="w-full py-4 bg-accent text-accent-foreground font-bold tracking-widest uppercase text-xs rounded-xl hover:bg-accent/90 transform transition-all hover:-translate-y-1"
+                className="w-full py-4 bg-accent text-accent-foreground font-bold tracking-widest uppercase text-xs rounded-xl hover:bg-accent/90 transform transition-all hover:-translate-y-1 flex items-center justify-center gap-2 group"
               >
-                Send Brief &rarr;
+                Send Brief <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
           </motion.form>

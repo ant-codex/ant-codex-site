@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   keywords: ["Web Design", "Development", "Branding", "Next.js", "SEO", "E-commerce", "Digital Studio"],
   authors: [{ name: "Ant-Codex Team" }],
   creator: "Ant-Codex",
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",

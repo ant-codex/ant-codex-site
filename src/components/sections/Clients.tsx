@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
 
 const clients = [
   "LUMINA", "VERTEX", "AURA", "NEBULA", "PULSE", "SYNTHETIX", 
@@ -31,7 +32,7 @@ export function Clients() {
         >
           LET&apos;S CREATE 
           <span className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center group-hover:bg-[#c8ff00] group-hover:border-[#c8ff00] group-hover:text-black transition-all">
-            ↗
+            <ArrowUpRight className="w-6 h-6" />
           </span>
         </Link>
       </div>
