@@ -71,6 +71,10 @@
   --color-ring: var(--ring);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   * {
     @apply border-border;

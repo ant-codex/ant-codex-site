@@ -1,12 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { Check, ArrowRight, ArrowUpRight } from 'lucide-react';
 
 const plans = [
-  { name: "Starter", price: "POA", desc: "Perfect for personal brands and simple landing pages.", featured: false },
-  { name: "Dynamic", price: "POA", desc: "Custom business websites with CMS and basic SEO.", featured: true },
-  { name: "Pro Shop", price: "POA", desc: "Full e-commerce ecosystem with high conversion design.", featured: false },
-  { name: "Enterprise", price: "POA", desc: "Complex digital products and high-scale applications.", featured: false }
+  { 
+    name: "Starter", 
+    price: "POA", 
+    desc: "Perfect for personal brands and simple landing pages.", 
+    featured: false,
+    features: ["Responsive Design", "Basic SEO", "1 Round of Revisions"]
+  },
+  { 
+    name: "Dynamic", 
+    price: "POA", 
+    desc: "Custom business websites with CMS and basic SEO.", 
+    featured: true,
+    features: ["Custom CMS Integration", "Advanced SEO", "3 Rounds of Revisions", "Performance Optimization"]
+  },
+  { 
+    name: "Pro Shop", 
+    price: "POA", 
+    desc: "Full e-commerce ecosystem with high conversion design.", 
+    featured: false,
+    features: ["Shopify/Stripe Integration", "Product Strategy", "Conversion Tracking", "Post-Launch Support"]
+  },
+  { 
+    name: "Enterprise", 
+    price: "POA", 
+    desc: "Complex digital products and high-scale applications.", 
+    featured: false,
+    features: ["Custom Web Apps", "API Integrations", "Dedicated Support", "Scalable Infrastructure"]
+  }
 ];
 
 export function Pricing() {
@@ -30,32 +56,64 @@ export function Pricing() {
             </a>
           </motion.div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-4">
             {plans.map((plan, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`flex justify-between items-center p-6 md:p-8 border border-border mt-[-1px] cursor-pointer group transition-all duration-300 ${
-                  i === 0 ? 'rounded-t-2xl' : ''
-                } ${i === plans.length - 1 ? 'rounded-b-2xl' : ''} ${
-                  plan.featured ? 'bg-accent/5 border-accent/30' : 'hover:bg-muted'
+                className={`relative group p-8 rounded-3xl border transition-all duration-500 overflow-hidden ${
+                  plan.featured 
+                    ? 'bg-zinc-900 border-[#c8ff00]/30 shadow-[0_0_40px_rgba(200,255,0,0.05)]' 
+                    : 'bg-white/5 border-white/10 hover:border-white/20'
                 }`}
               >
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-lg font-bold tracking-tight">{plan.name}</span>
-                    {plan.featured && (
-                      <span className="text-[9px] font-bold uppercase tracking-widest bg-accent text-accent-foreground px-2 py-0.5 rounded-full">POPULAR</span>
-                    )}
+                {/* Visual Accent for Featured */}
+                {plan.featured && (
+                  <div className="absolute top-0 right-0 p-4">
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] bg-[#c8ff00] text-black px-3 py-1 rounded-full shadow-lg shadow-[#c8ff00]/20">
+                      Top Choice
+                    </span>
                   </div>
-                  <p className="text-xs text-muted-foreground max-w-[200px]">{plan.desc}</p>
-                </div>
-                <div className="flex items-center gap-6">
-                  <span className="font-bold text-lg">{plan.price}</span>
-                  <span className="text-accent text-xl opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                )}
+
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+                  <div className="max-w-xs">
+                    <h3 className="text-2xl font-black tracking-tighter mb-2 group-hover:text-[#c8ff00] transition-colors uppercase italic">
+                      {plan.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {plan.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                       {plan.features.slice(0, 2).map((f, idx) => (
+                         <span key={idx} className="text-[10px] uppercase tracking-widest bg-white/5 px-2 py-1 rounded border border-white/5 opacity-60">
+                           {f}
+                         </span>
+                       ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-6 md:min-w-[240px] justify-end">
+                    <div className="text-right">
+                      <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 block mb-1">Starting from</span>
+                      <span className="text-4xl font-black tracking-tighter">{plan.price}</span>
+                    </div>
+                    
+                    <Link
+                      href="/#contact"
+                      className={`w-full sm:w-auto px-10 py-4 rounded-full font-black uppercase tracking-widest text-[10px] transition-all flex items-center justify-center gap-3 relative overflow-hidden group/btn ${
+                        plan.featured
+                          ? 'bg-[#c8ff00] text-black hover:shadow-[0_0_30px_rgba(200,255,0,0.3)]'
+                          : 'bg-white text-black hover:bg-zinc-200'
+                      }`}
+                    >
+                      Get Started
+                      <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))}

@@ -67,6 +67,14 @@ export function Hero() {
       onMouseMove={handleMouseMove}
       className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#E5E5E5] perspective-1000"
     >
+      {/* Marble Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply" 
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+      />
+      
+      {/* Background Depth Gradient */}
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/[0.02] to-black/[0.1] pointer-events-none" />
+
       {/* Huge Overlapping Text (z-30) - Now Synced with Tilt */}
       <motion.h1 
         style={{ rotateX: headerRotateX, rotateY: headerRotateY }}
@@ -77,6 +85,17 @@ export function Hero() {
 
       {/* Motion Card Wrapper (z-10) */}
       <div className="relative z-10 w-[90%] max-w-6xl flex flex-col items-center justify-center pt-24">
+        {/* RGB Synced Dynamic Shadow */}
+        <motion.div
+           style={{ 
+             rotateX, 
+             rotateY,
+             backgroundColor: cardColor,
+             opacity: 0.4
+           }}
+           className="absolute w-[80%] h-[40%] blur-[120px] rounded-full -bottom-10 pointer-events-none transition-colors duration-1000"
+        />
+
         <motion.div 
           ref={cardRef}
           style={{ rotateX, rotateY }}
@@ -118,10 +137,10 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Dynamic Floor Shadow */}
+        {/* Static Base Shadow */}
         <motion.div 
           style={{ x: shadowX, y: shadowY }}
-          className="w-[70%] h-16 bg-black/20 blur-3xl rounded-[100%] mt-12 scale-x-125" 
+          className="w-[70%] h-16 bg-black/10 blur-3xl rounded-[100%] mt-12 scale-x-125" 
         />
       </div>
 

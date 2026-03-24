@@ -1,11 +1,8 @@
-﻿'use client';
+'use client';
 
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const categories = ["All", "E-commerce", "Brand Identity", "Websites"];
 
 const projects = [
   {
@@ -29,49 +26,29 @@ const projects = [
 ];
 
 export function Work() {
-  const [activeCat, setActiveCat] = useState("All");
-
-  const filtered = activeCat === "All" ? projects : projects.filter(p => p.cat === activeCat);
-
   return (
     <section id="work" className="py-24 md:py-32 bg-secondary/50">
-      <div className="container">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="mb-16"
         >
           <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-4">Our Selected Work</p>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-12">Crafting digital<br />excellence.</h2>
         </motion.div>
 
-        <div className="flex gap-8 mb-12 border-b border-border overflow-x-auto no-scrollbar">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCat(cat)}
-              className={`pb-4 text-xs font-semibold uppercase tracking-widest transition-colors relative whitespace-nowrap ${
-                activeCat === cat ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              {cat}
-              {activeCat === cat && (
-                <motion.div layoutId="tab-underline" className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
-              )}
-            </button>
-          ))}
-        </div>
-
         <div className="grid gap-8">
           <AnimatePresence mode="popLayout">
-            {filtered.map((item, i) => (
+            {projects.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, scale: 0.98, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="group relative aspect-[21/9] overflow-hidden rounded-2xl bg-muted"
               >
                 <Image
@@ -86,8 +63,8 @@ export function Work() {
                   <p className="text-[10px] uppercase tracking-widest opacity-60 mb-2">{item.cat}</p>
                   <h3 className="text-3xl font-bold tracking-tight mb-2">{item.title}</h3>
                   <p className="text-sm opacity-80 max-w-md mb-6">{item.desc}</p>
-                  <Link href="#" className="text-xs uppercase tracking-widest text-accent border-b border-accent/40 pb-1 hover:border-accent transition-colors">
-                    View Project ÔåÆ
+                  <Link href="#" className="text-xs uppercase tracking-widest text-[#c8ff00] border-b border-[#c8ff00]/40 pb-1 hover:border-[#c8ff00] transition-colors">
+                    View Project ↗
                   </Link>
                 </div>
               </motion.div>

@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CustomCursor } from "@/components/ui/custom-cursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,18 +11,32 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ant-Codex | Web Design Studio",
-  description: "Ant-Codex Web Design Studio — We build websites, landing pages, brand identities and digital experiences that convert.",
-  icons: {
-    icon: [
-      { url: '/favicon.png', type: 'image/png' },
-    ],
-    apple: '/apple-touch-icon.png',
+  metadataBase: new URL('https://ant-codex.vercel.app'),
+  title: {
+    default: "Ant-Codex | High-End Web Design Studio",
+    template: "%s | Ant-Codex"
   },
+  description: "Ant-Codex is a premium web design studio building websites, brand identities and digital experiences that convert. Specialist in Next.js, Framer Motion and modern UX.",
+  keywords: ["Web Design", "Development", "Branding", "Next.js", "SEO", "E-commerce", "Digital Studio"],
+  authors: [{ name: "Ant-Codex Team" }],
+  creator: "Ant-Codex",
   openGraph: {
-    title: 'Ant-Codex | Web Design Studio',
-    description: 'We build websites, landing pages, brand identities and digital experiences that convert.',
-    type: 'website',
+    type: "website",
+    locale: "en_US",
+    url: "https://ant-codex.vercel.app",
+    title: "Ant-Codex | High-End Web Design Studio",
+    description: "Building the next generation of digital excellence. Websites, branding, and e-commerce.",
+    siteName: "Ant-Codex",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ant-Codex | Web Design Studio",
+    description: "Building the next generation of digital excellence.",
+    creator: "@antcodex",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -46,7 +59,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CustomCursor />
           <Header />
           <main>{children}</main>
           <Footer />
