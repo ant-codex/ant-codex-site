@@ -5,6 +5,12 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import('@/components/common/Map'), { 
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-zinc-900 animate-pulse rounded-[2rem]" />
+});
 
 export function Footer() {
   const footerRef = useRef(null);
@@ -18,18 +24,16 @@ export function Footer() {
 
   return (
     <footer ref={footerRef} className="relative bg-black pt-32 overflow-hidden border-t border-white/5">
-      {/* Dynamic London Background */}
+      {/* Dynamic London Map Background */}
       <motion.div 
         style={{ y, opacity }}
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none px-6 md:px-12"
       >
-        <Image 
-          src="/images/london_bg.png" 
-          alt="London Skyline" 
-          fill
-          className="object-cover grayscale brightness-[0.4]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-transparent" />
+        <div className="relative w-full h-full max-w-[1400px] mx-auto">
+          <Map />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        </div>
       </motion.div>
 
       <div className="container relative z-10">
