@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -104,7 +104,7 @@ export function Contact() {
                 type="submit"
                 className="w-full py-4 bg-accent text-accent-foreground font-bold tracking-widest uppercase text-xs rounded-xl hover:bg-accent/90 transform transition-all hover:-translate-y-1"
               >
-                Send Brief ÔåÆ
+                Send Brief &rarr;
               </button>
             </div>
           </motion.form>
