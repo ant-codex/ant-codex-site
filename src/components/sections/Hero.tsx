@@ -23,6 +23,10 @@ export function Hero() {
   const springConfig = { damping: 30, stiffness: 200, mass: 0.5 };
   const rotateX = useSpring(useTransform(mouseY, [0, 1], [15, -15]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [0, 1], [-15, 15]), springConfig);
+  // Header tilt (slightly less intense for subtle depth)
+  const headerRotateX = useSpring(useTransform(mouseY, [0, 1], [8, -8]), springConfig);
+  const headerRotateY = useSpring(useTransform(mouseX, [0, 1], [-8, 8]), springConfig);
+  
   const shadowX = useSpring(useTransform(mouseX, [0, 1], [20, -20]), springConfig);
   const shadowY = useSpring(useTransform(mouseY, [0, 1], [20, -20]), springConfig);
 
@@ -57,49 +61,19 @@ export function Hero() {
     return () => clearInterval(colorTimer);
   }, []);
 
-  useEffect(() => {
-    if (!containerRef.current || !cardRef.current) return;
-    
-    // SCROLL ZOOM PINNED TRANSITION
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: '+=150%',
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-      }
-    });
-
-    tl.to(cardRef.current, {
-      scale: 12,
-      borderRadius: 0,
-      duration: 1,
-      ease: "power2.inOut"
-    }, 0);
-
-    tl.to(".hero-header", {
-      y: -200,
-      opacity: 0,
-      duration: 0.5,
-    }, 0);
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
-  }, []);
-
   return (
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#E5E5E5] perspective-1000"
     >
-      {/* Huge Overlapping Text (z-30) */}
-      <h1 className="hero-header absolute top-[22%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-white whitespace-nowrap select-none pointer-events-none tracking-tighter z-30 leading-none drop-shadow-sm">
+      {/* Huge Overlapping Text (z-30) - Now Synced with Tilt */}
+      <motion.h1 
+        style={{ rotateX: headerRotateX, rotateY: headerRotateY }}
+        className="hero-header absolute top-[22%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-white whitespace-nowrap select-none pointer-events-none tracking-tighter z-30 leading-none drop-shadow-sm transform-gpu"
+      >
         WE CREATE
-      </h1>
+      </motion.h1>
 
       {/* Motion Card Wrapper (z-10) */}
       <div className="relative z-10 w-[90%] max-w-6xl flex flex-col items-center justify-center pt-24">
