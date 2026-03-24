@@ -49,7 +49,7 @@ export function Hero() {
       className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-background"
     >
       {/* Huge Background Text - Fixed or Parallax */}
-      <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-black/5 whitespace-nowrap select-none pointer-events-none tracking-tighter mix-blend-multiply">
+      <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-white/5 whitespace-nowrap select-none pointer-events-none tracking-tighter opacity-50">
         WE CREATE
       </h1>
 
@@ -62,7 +62,7 @@ export function Hero() {
         className="relative z-10 w-[90%] max-w-5xl aspect-square md:aspect-[21/9] rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center justify-center bg-black border border-white/10"
       >
         <EtheralShadow
-          color="rgba(255, 107, 0, 0.6)" // Orange accent
+          color="rgba(200, 255, 0, 0.4)" // Neon accent (c8ff00)
           animation={{ scale: 60, speed: 20 }}
           noise={{ opacity: 0.8, scale: 1.5 }}
           sizing="fill"
