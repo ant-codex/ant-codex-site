@@ -66,7 +66,7 @@ export function Hero() {
       className="relative h-screen min-h-[700px] w-full flex items-center justify-center overflow-hidden bg-[#E5E5E5]"
     >
       {/* Huge Overlapping Text - Foreground Layer (z-30) */}
-      <h1 className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12vw] font-black text-white whitespace-nowrap select-none pointer-events-none tracking-tighter z-30 leading-none drop-shadow-sm">
+      <h1 className="absolute top-[25%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12vw] font-black text-white whitespace-nowrap select-none pointer-events-none tracking-tighter z-30 leading-none drop-shadow-sm">
         WE CREATE
       </h1>
 
@@ -94,8 +94,8 @@ export function Hero() {
           </motion.div>
           
           {/* Rotating Text inside the card - Mid Layer (z-20) */}
-          <div className="relative z-20 text-center px-4 w-full mt-12 md:mt-20">
-            <div className="h-[1.5em] relative overflow-hidden flex items-center justify-center w-full">
+          <div className="relative z-20 text-center px-4 w-full h-full flex items-center justify-center pt-24">
+            <div className="relative flex items-center justify-center w-full min-h-[300px]">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={rotatingTexts[index]}
@@ -103,7 +103,7 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -50, scale: 0.8 }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-white text-4xl md:text-7xl lg:text-9xl font-black tracking-tight absolute whitespace-nowrap filter drop-shadow-lg"
+                  className="text-white text-4xl md:text-8xl lg:text-[10vw] font-black tracking-tight absolute whitespace-nowrap filter drop-shadow-2xl"
                 >
                   {rotatingTexts[index]}
                 </motion.span>
