@@ -51,13 +51,18 @@ export function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-10">
-            {['Services', 'Work', 'Pricing', 'Contact'].map((item) => (
+            {[
+              { label: 'Services', href: '/services' },
+              { label: 'Work', href: '/work' },
+              { label: 'Pricing', href: '/pricing' },
+              { label: 'Contact', href: '/contact' },
+            ].map((item) => (
               <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 className="text-xs font-medium uppercase tracking-widest opacity-80 hover:opacity-100 transition-opacity relative group"
               >
-                {item}
+                {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-current transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
@@ -71,10 +76,10 @@ export function Header() {
               {resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode'}
             </button>
             <Link
-              href="#contact"
+              href="/contact"
               className="hidden md:inline-flex px-6 py-2.5 rounded-full border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 text-xs font-semibold tracking-wider"
             >
-              Let's build →
+              Let&apos;s build →
             </Link>
             <button 
               onClick={() => setMenuOpen(true)}
@@ -105,28 +110,33 @@ export function Header() {
               ✕
             </button>
             <div className="flex flex-col gap-6">
-              {['Services', 'Work', 'Pricing', 'Contact'].map((item, i) => (
+              {[
+                { label: 'Services', href: '/services' },
+                { label: 'Work', href: '/work' },
+                { label: 'Pricing', href: '/pricing' },
+                { label: 'Contact', href: '/contact' },
+              ].map((item, i) => (
                 <motion.div
-                  key={item}
+                  key={item.label}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 + i * 0.1 }}
                 >
                   <Link
-                    href={`#${item.toLowerCase()}`}
+                    href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className="text-5xl md:text-7xl font-bold tracking-tighter hover:text-accent transition-colors"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </motion.div>
               ))}
             </div>
             <div className="absolute bottom-12 left-8 right-8 flex justify-between text-xs text-muted-foreground uppercase tracking-widest">
-              <span>© 2026 Ant-Codex</span>
+              <span>&copy; 2026 Ant-Codex</span>
               <div className="flex gap-4">
-                <a href="#">Insta</a>
-                <a href="#">Linked</a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Insta</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Linked</a>
               </div>
             </div>
           </motion.div>

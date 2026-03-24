@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -14,7 +14,23 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Ant-Codex | Web Design Studio",
   description: "Ant-Codex Web Design Studio — We build websites, landing pages, brand identities and digital experiences that convert.",
+  icons: {
+    icon: [
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
+  openGraph: {
+    title: 'Ant-Codex | Web Design Studio',
+    description: 'We build websites, landing pages, brand identities and digital experiences that convert.',
+    type: 'website',
+  },
 };
+
+export const viewport: Viewport = {
+  themeColor: '#0a0a0a',
+};
+
 
 export default function RootLayout({
   children,
