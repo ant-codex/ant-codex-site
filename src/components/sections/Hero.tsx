@@ -30,8 +30,10 @@ export function Hero() {
   const shadowX = useSpring(useTransform(mouseX, [0, 1], [20, -20]), springConfig);
   const shadowY = useSpring(useTransform(mouseY, [0, 1], [20, -20]), springConfig);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e;
+  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    
     const { innerWidth, innerHeight } = window;
     mouseX.set(clientX / innerWidth);
     mouseY.set(clientY / innerHeight);
@@ -65,7 +67,8 @@ export function Hero() {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#E5E5E5] perspective-1000"
+      onTouchMove={handleMouseMove}
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-[#E5E5E5] perspective-1000 touch-none"
     >
       {/* Marble Texture Overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply" 
@@ -78,7 +81,7 @@ export function Hero() {
       {/* Huge Overlapping Text (z-30) - Now Synced with Tilt */}
       <motion.h1 
         style={{ rotateX: headerRotateX, rotateY: headerRotateY }}
-        className="hero-header absolute top-[22%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black text-white whitespace-nowrap select-none pointer-events-none tracking-tighter z-30 leading-none drop-shadow-sm transform-gpu"
+        className="hero-header absolute top-[18%] md:top-[22%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-[18vw] md:text-[15vw] font-black text-white mix-blend-difference md:mix-blend-normal whitespace-nowrap select-none pointer-events-none tracking-tighter z-30 leading-none drop-shadow-sm transform-gpu opacity-90 md:opacity-100"
       >
         WE CREATE
       </motion.h1>
@@ -102,7 +105,7 @@ export function Hero() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full aspect-square md:aspect-[21/9] rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center bg-[#000814] transform-gpu border border-white/5"
+          className="relative w-full aspect-[4/5] md:aspect-[21/9] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl flex items-center justify-center bg-[#000814] transform-gpu border border-white/5"
         >
           <motion.div
             animate={{ backgroundColor: cardColor }}
@@ -128,7 +131,7 @@ export function Hero() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -30, scale: 0.9 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="text-white text-5xl md:text-8xl lg:text-[8vw] font-black tracking-tight absolute whitespace-nowrap filter drop-shadow-2xl"
+                  className="text-white text-6xl md:text-8xl lg:text-[8vw] font-black tracking-tight absolute whitespace-nowrap filter drop-shadow-2xl"
                 >
                   {rotatingTexts[index]}
                 </motion.span>
@@ -150,7 +153,7 @@ export function Hero() {
       </div>
       
       <div className="absolute bottom-8 right-8 z-30 hidden md:flex gap-10 text-[9px] tracking-[0.3em] font-bold uppercase text-black/30">
-        <a href="https://www.instagram.com/antcodexstudio/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Instagram</a>
+        <a href="https://www.instagram.com/antcodexstudio/" target="_blank" rel="noopener noreferrer" className="text-black/60 md:text-black/30 hover:text-black transition-colors">Instagram</a>
       </div>
     </section>
   );
