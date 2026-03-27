@@ -68,9 +68,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground opacity-30">Social</h4>
             <div className="flex flex-col gap-3">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#c8ff00] transition-colors">Instagram</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#c8ff00] transition-colors">LinkedIn</a>
-              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#c8ff00] transition-colors">Behance</a>
+              <a href="https://www.instagram.com/antcodexstudio/" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#c8ff00] transition-colors">Instagram</a>
             </div>
           </div>
           <div className="flex flex-col gap-4">

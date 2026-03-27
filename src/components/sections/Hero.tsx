@@ -150,8 +150,7 @@ export function Hero() {
       </div>
       
       <div className="absolute bottom-8 right-8 z-30 hidden md:flex gap-10 text-[9px] tracking-[0.3em] font-bold uppercase text-black/30">
-        <a href="#" className="hover:text-black transition-colors">Instagram</a>
-        <a href="#" className="hover:text-black transition-colors">LinkedIn</a>
+        <a href="https://www.instagram.com/antcodexstudio/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Instagram</a>
       </div>
     </section>
   );
