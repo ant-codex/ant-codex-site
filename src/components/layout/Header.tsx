@@ -133,8 +133,7 @@ export function Header() {
             <div className="absolute bottom-12 left-8 right-8 flex justify-between text-xs text-muted-foreground uppercase tracking-widest">
               <span>&copy; 2026 Ant-Codex</span>
               <div className="flex gap-4">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Insta</a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Linked</a>
+                <a href="https://www.instagram.com/antcodexstudio/" target="_blank" rel="noopener noreferrer">Insta</a>
               </div>
             </div>
           </motion.div>
