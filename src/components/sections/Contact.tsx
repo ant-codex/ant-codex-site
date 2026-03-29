@@ -23,8 +23,8 @@ export function Contact() {
             <p className="text-muted-foreground max-w-md leading-relaxed mb-12">
               Ready to start your next project? Drop us a line and we'll get back to you within 24 hours.
             </p>
-            <a href="mailto:hello@ant-codex.studio" className="text-xl font-medium text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all">
-              hello@ant-codex.studio
+            <a href="mailto:contact@antcodex.pro" className="text-xl font-medium text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all">
+              contact@antcodex.pro
             </a>
           </motion.div>
 

@@ -49,7 +49,7 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="text-white text-xl font-bold uppercase tracking-widest mb-4 text-[#c8ff00]">5. Your Rights</h2>
-              <p>You have the right to request access to, correction of, or deletion of any personal data we hold about you. Contact us at hello@ant-codex.studio for any privacy-related inquiries.</p>
+              <p>You have the right to request access to, correction of, or deletion of any personal data we hold about you. Contact us at contact@antcodex.pro for any privacy-related inquiries.</p>
             </section>
           </div>
         </motion.div>

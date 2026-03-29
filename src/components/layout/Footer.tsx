@@ -74,7 +74,7 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <h4 className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground opacity-30">Contact</h4>
             <div className="flex flex-col gap-3">
-              <a href="mailto:hello@ant-codex.studio" className="text-sm font-medium hover:text-[#c8ff00] transition-colors">hello@ant-codex.studio</a>
+              <a href="mailto:contact@antcodex.pro" className="text-sm font-medium hover:text-[#c8ff00] transition-colors">contact@antcodex.pro</a>
               <Link href="/#contact" className="text-sm font-medium hover:text-[#c8ff00] transition-colors uppercase tracking-widest text-[9px]">Start a Project</Link>
             </div>
           </div>
