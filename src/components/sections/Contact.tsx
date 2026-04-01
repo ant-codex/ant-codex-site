@@ -7,6 +7,35 @@ import { ArrowRight } from 'lucide-react';
 export function Contact() {
   const [focused, setFocused] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', email: '', service: '', msg: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setStatus('success');
+      setForm({ name: '', email: '', service: '', msg: '' });
+    } catch (err: any) {
+      console.error('Contact form error:', err);
+      setStatus('error');
+      setErrorMessage(err.message || 'Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <section id="contact" className="py-24 md:py-32 border-t border-border/50">
@@ -29,6 +58,7 @@ export function Contact() {
           </motion.div>
 
           <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -103,10 +133,36 @@ export function Contact() {
             <div className="sm:col-span-2">
               <button
                 type="submit"
-                className="w-full py-4 bg-accent text-accent-foreground font-bold tracking-widest uppercase text-xs rounded-xl hover:bg-accent/90 transform transition-all hover:-translate-y-1 flex items-center justify-center gap-2 group"
+                disabled={status === 'loading'}
+                className={`w-full py-4 font-bold tracking-widest uppercase text-xs rounded-xl transform transition-all flex items-center justify-center gap-2 group ${
+                  status === 'loading' 
+                    ? 'bg-accent/50 cursor-not-allowed text-accent-foreground/50' 
+                    : 'bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-1'
+                }`}
               >
-                Send Brief <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                {status === 'loading' ? 'Sending...' : 'Send Brief'} 
+                {status !== 'loading' && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
               </button>
+
+              {/* Feedback Messages */}
+              {status === 'success' && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 text-accent text-sm font-medium text-center"
+                >
+                  Message sent successfully! We'll get back to you soon.
+                </motion.p>
+              )}
+              {status === 'error' && (
+                <motion.p 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 text-red-500 text-sm font-medium text-center"
+                >
+                  {errorMessage}
+                </motion.p>
+              )}
             </div>
           </motion.form>
         </div>
